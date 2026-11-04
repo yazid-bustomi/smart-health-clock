@@ -4,27 +4,36 @@
 
 [![Platform](https://img.shields.io/badge/Platform-ESP8266%20NodeMCU-blue)](https://www.espressif.com/)
 [![Sensor](https://img.shields.io/badge/Sensor-MAX30102-red)](https://www.maximintegrated.com/)
-[![Display](https://img.shields.io/badge/Display-OLED%20SH1106%201.3%22-green)](https://github.com/)
+[![Display](https://img.shields.io/badge/Display-OLED%20SH1106-green)](https://github.com/olikraus/u8g2)
 [![Language](https://img.shields.io/badge/Language-C%2B%2B%20%28Arduino%29-orange)](https://www.arduino.cc/)
+[![Project](https://img.shields.io/badge/Project-Freelance-lightgrey)](https://www.yazid-bustomi.my.id/)
+
+Proyek freelance: perangkat dirancang, dirakit, dan diprogram dari awal, mulai dari pemilihan komponen, wiring, firmware, sampai casing cetak 3D.
 
 ---
 
-## 📸 Tampilan Proyek
+## 📸 Dokumentasi
 
-```
-┌─────────────────────────────┐
-│        JamSehat v4.1        │
-│  ┌───────────────────────┐  │
-│  │    OLED 1.3" SH1106   │  │
-│  │   ╔═══════════════╗   │  │
-│  │   ║  14:35  :42   ║   │  │
-│  │   ║  Sel 09/06    ║   │  │
-│  │   ╚═══════════════╝   │  │
-│  └───────────────────────┘  │
-│  [MAX30102]   [NodeMCU]  🔘 │
-│   Sensor HR    ESP8266  BTN │
-└─────────────────────────────┘
-```
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="docs/images/komponen.jpg" alt="Komponen Smart Health Clock sebelum dirakit" width="100%"><br>
+      <sub><b>Komponen sebelum dirakit.</b> NodeMCU ESP8266 dengan OLED, sensor MAX30102, port micro USB, push button, dan baterai.</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="docs/images/hasil-rakit.jpg" alt="Prototipe Smart Health Clock dalam casing cetak 3D" width="100%"><br>
+      <sub><b>Prototipe dalam casing cetak 3D</b> saat pengujian, menampilkan layar HASIL SCAN.</sub>
+    </td>
+  </tr>
+</table>
+
+| Label di foto | Komponen | Fungsi |
+|---------------|----------|--------|
+| Node | NodeMCU ESP8266 (ESP-12E) | Otak perangkat: jam NTP, pembacaan sensor, hotspot dan web server |
+| Kabel fleksibel LED | Konektor OLED | Menghubungkan layar OLED ke bus I2C |
+| Port micro | Micro USB | Upload program dan catu daya saat pengembangan |
+| Sensor | MAX30102 | Membaca detak jantung dan SpO₂ dari ujung jari |
+| Push Button | Tactile switch (D5) | Mulai scan dan membangunkan perangkat dari sleep |
 
 ---
 
@@ -259,10 +268,14 @@ STATE_CLOCK ──[tombol]──► STATE_SCAN (30 detik)
 ## 📁 Struktur File
 
 ```
-JamSehat/
-├── JamSehat.ino          # Kode utama Arduino
-└── README.md             # Dokumentasi ini
+smart-health-clock/
+├── smart-health-clock.ino   # Kode utama Arduino
+├── docs/
+│   └── images/              # Foto dokumentasi perangkat
+└── README.md                # Dokumentasi ini
 ```
+
+> Arduino IDE meminta file `.ino` berada di folder dengan nama yang sama. Clone repo ini apa adanya, lalu buka `smart-health-clock/smart-health-clock.ino`.
 
 ---
 
@@ -293,7 +306,16 @@ JamSehat/
 
 ## 👨‍💻 Tentang Proyek
 
-Proyek ini dibuat sebagai eksplorasi di bidang **IoT kesehatan (health IoT)** menggunakan komponen terjangkau. JamSehat menggabungkan fungsi jam digital dan pemantau kesehatan sederhana dalam satu perangkat kecil yang bisa diakses dari smartphone.
+JamSehat adalah proyek freelance di bidang **IoT kesehatan (health IoT)** dengan komponen terjangkau. Perangkat ini menggabungkan jam digital dan pemantau kesehatan sederhana dalam satu unit kecil yang hasilnya bisa dilihat dari smartphone.
+
+Pekerjaan yang saya kerjakan:
+
+- Pemilihan komponen dan wiring (ESP8266, MAX30102, OLED, push button)
+- Firmware Arduino: jam NTP, pembacaan HR/SpO₂ dengan filter dan indikator kualitas sinyal, mode sleep
+- Hotspot Wi-Fi dengan dashboard web dan endpoint JSON
+- Perakitan ke dalam casing cetak 3D dan pengujian
+
+Dibuat oleh **Akhmad Yazid Bustomi** — [yazid-bustomi.my.id](https://www.yazid-bustomi.my.id/)
 
 > ⚠️ **Disclaimer:** Perangkat ini **bukan alat medis** dan tidak menggantikan pemeriksaan oleh tenaga kesehatan profesional. Hasil pengukuran digunakan untuk keperluan edukasi dan eksperimen.
 
